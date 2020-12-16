@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/todoListFragment"
-        android:name="com.example.todoapp.TodoListFragment"
+        android:name="com.example.todoapp.fragments.TodoListFragment.TodoListFragment"
         android:label="fragment_todo_list"
         tools:layout="@layout/fragment_todo_list" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/addTodoFragment"
-        android:name="com.example.todoapp.AddTodoFragment"
+        android:name="com.example.todoapp.fragments.AddTodoFragment.AddTodoFragment"
         android:label="fragment_add_todo"
         tools:layout="@layout/fragment_add_todo" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/updateTodoFragment"
-        android:name="com.example.todoapp.UpdateTodoFragment"
+        android:name="com.example.todoapp.fragments.UpdateTodoFragment.UpdateTodoFragment"
         android:label="fragment_update_todo"
         tools:layout="@layout/fragment_update_todo" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/viewTodoFragment"
-        android:name="com.example.todoapp.ViewTodoFragment"
+        android:name="com.example.todoapp.fragments.ViewTodoFragment.ViewTodoFragment"
         android:label="fragment_view_todo"
         tools:layout="@layout/fragment_view_todo" >
         <action
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/splashScreenFragment"
-        android:name="com.example.todoapp.SplashScreenFragment"
+        android:name="com.example.todoapp.fragments.SplashScreenFragment.SplashScreenFragment"
         android:label="fragment_splash_screen"
         tools:layout="@layout/fragment_splash_screen" >
         <action
