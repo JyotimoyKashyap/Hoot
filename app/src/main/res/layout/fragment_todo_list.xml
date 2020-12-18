@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.TodoListFragment.TodoListFragment">
+    tools:context=".fragments.TodoListFragment.TodoListFragment"
+    android:backgroundTint="@color/background">
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -24,9 +25,22 @@
         android:layout_marginBottom="24dp"
         android:clickable="true"
         android:focusable="true"
-        app:tint="@color/white"
+        app:tint="@color/background"
         app:backgroundTint="#673AB7"
         android:src="@drawable/ic_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/todo_list_lottie_anim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:lottie_rawRes="@raw/no_data_anim"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:visibility="gone"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
