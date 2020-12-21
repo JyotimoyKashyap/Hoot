@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/todoListFragment"
         android:name="com.example.todoapp.fragments.TodoListFragment.TodoListFragment"
-        android:label="fragment_todo_list"
+        android:label="Todo"
         tools:layout="@layout/fragment_todo_list" >
         <action
             android:id="@+id/action_todoListFragment_to_addTodoFragment"
@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/addTodoFragment"
         android:name="com.example.todoapp.fragments.AddTodoFragment.AddTodoFragment"
-        android:label="fragment_add_todo"
+        android:label="Add"
         tools:layout="@layout/fragment_add_todo" >
         <action
             android:id="@+id/action_addTodoFragment_to_todoListFragment"
@@ -29,7 +29,7 @@
     <fragment
         android:id="@+id/updateTodoFragment"
         android:name="com.example.todoapp.fragments.UpdateTodoFragment.UpdateTodoFragment"
-        android:label="fragment_update_todo"
+        android:label="Update"
         tools:layout="@layout/fragment_update_todo" >
         <action
             android:id="@+id/action_updateTodoFragment_to_viewTodoFragment"
@@ -41,7 +41,7 @@
     <fragment
         android:id="@+id/viewTodoFragment"
         android:name="com.example.todoapp.fragments.ViewTodoFragment.ViewTodoFragment"
-        android:label="fragment_view_todo"
+        android:label="View"
         tools:layout="@layout/fragment_view_todo" >
         <action
             android:id="@+id/action_viewTodoFragment_to_todoListFragment"
@@ -58,7 +58,8 @@
         <action
             android:id="@+id/action_splashScreenFragment_to_todoListFragment"
             app:destination="@id/todoListFragment"
-            app:popUpTo="@id/splashScreenFragment"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/my_nav"
+            app:popUpToInclusive="true"
+            app:launchSingleTop="true"/>
     </fragment>
 </navigation>

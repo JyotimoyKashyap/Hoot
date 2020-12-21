@@ -7,13 +7,7 @@
     tools:context=".fragments.TodoListFragment.TodoListFragment"
     android:backgroundTint="@color/background">
 
-    <com.google.android.material.appbar.CollapsingToolbarLayout
-        android:id="@+id/collapsing_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="200dp">
 
-
-    </com.google.android.material.appbar.CollapsingToolbarLayout>
 
 
 
@@ -25,8 +19,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_anchor="@id/collapsing_toolbar"
-        app:layout_anchorGravity="bottom"/>
+        app:layout_anchorGravity="bottom"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
