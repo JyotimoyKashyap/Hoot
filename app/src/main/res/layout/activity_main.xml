@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,11 +18,32 @@
         android:id="@+id/navhostfragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/actionbar"
+        app:layout_anchor="@id/actionbar"
+        app:layout_anchorGravity="bottom"
+        android:layout_marginTop="?actionBarSize"
+        android:layout_marginBottom="?actionBarSize"
         app:navGraph="@navigation/my_nav" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@color/purple_500"
+        app:layout_anchor="@id/mainbottomappbar"
+        android:src="@drawable/ic_add"
+        app:tint="@color/white"/>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/mainbottomappbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_gravity="bottom"
+        app:fabAlignmentMode="end"
+        app:fabCradleRoundedCornerRadius="25dp"
+        app:fabAnimationMode="scale"
+        app:layout_anchor="@id/navhostfragment"
+        app:layout_anchorGravity="bottom"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

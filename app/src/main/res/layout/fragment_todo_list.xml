@@ -22,20 +22,6 @@
         app:layout_anchorGravity="bottom"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
-        android:clickable="true"
-        android:focusable="true"
-        app:tint="@color/background"
-        app:backgroundTint="#673AB7"
-        android:src="@drawable/ic_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_anchor="@id/bottom_app_bar"/>
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/todo_list_lottie_anim"
@@ -50,10 +36,5 @@
         app:lottie_loop="true"
         android:visibility="gone" />
 
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bottom_app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:layout_gravity="bottom"
-        app:fabAlignmentMode="end" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

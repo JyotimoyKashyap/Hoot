@@ -25,9 +25,7 @@ class TodoListFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.show()
         _binding = FragmentTodoListBinding.inflate(inflater, container, false)
 
-        binding.floatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_todoListFragment_to_addTodoFragment)
-        }
+
 
 
         return binding.root

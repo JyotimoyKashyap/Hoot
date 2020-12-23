@@ -29,6 +29,8 @@ class SplashScreenFragment : Fragment() {
             view.findNavController().navigate(R.id.action_splashScreenFragment_to_todoListFragment)
         },500)
 
+
+
         return view
     }
 
