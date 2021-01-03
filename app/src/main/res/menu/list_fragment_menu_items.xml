@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:orderInCategory="200"
+        android:id="@+id/menu_delete_all"
+        android:title="Delete All"
+        app:showAsAction="always"
+        android:icon="@drawable/delete"/>
+    <item
+        android:orderInCategory="300"
+        android:id="@+id/menu_search"
+        android:title="Search"
+        android:icon="@drawable/search"
+        app:showAsAction="always"/>
+
+    <group android:checkableBehavior="single"
+        android:orderInCategory="100">
+        <item
+            android:id="@+id/menu_sort_by"
+            android:title="Sort By"
+            app:showAsAction="always"
+            android:icon="@drawable/sort_by">
+            <menu>
+                <item
+                    android:id="@+id/menu_priority_high"
+                    android:title="Priority High"/>
+                <item
+                    android:id="@+id/menu_priority_low"
+                    android:title="Priority Low"/>
+            </menu>
+        </item>
+    </group>
+
+
+
+
+</menu>

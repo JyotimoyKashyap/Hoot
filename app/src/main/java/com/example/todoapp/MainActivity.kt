@@ -6,8 +6,11 @@ import android.animation.ValueAnimator
 import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.animation.LinearInterpolator
+import android.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
@@ -53,6 +56,8 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         }
 
 
+
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -76,14 +81,29 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                 }
 
             }
-            R.id.todoListFragment ->{
+            R.id.todoListFragment -> {
                 binding.run {
                     fab.setImageState(intArrayOf(-android.R.attr.state_activated), true)
                     fab.setImageDrawable(resources.getDrawable(R.drawable.add))
                     mainbottomappbar.visibility = View.VISIBLE
                     mainbottomappbar.performShow()
                     fab.visibility = View.VISIBLE
-                    mainbottomappbar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
+                    mainbottomappbar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
+                    mainbottomappbar.replaceMenu(R.menu.list_fragment_menu_items)
+                    mainbottomappbar.setOnMenuItemClickListener { it ->
+                        when (it.itemId) {
+                            R.id.menu_delete_all -> {
+                                //do the task
+                                true
+                            }
+                            R.id.menu_search ->{
+                                //do the task
+                                true
+                            }
+                            else -> false
+                        }
+                    }
+
 
                 }
 
@@ -93,6 +113,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                     fab.setImageState(intArrayOf(android.R.attr.state_activated), true)
                     fab.setImageDrawable(resources.getDrawable(R.drawable.done))
                     mainbottomappbar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
+                    mainbottomappbar.performHide()
 
                 }
             }
@@ -101,6 +122,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                     fab.setImageState(intArrayOf(android.R.attr.state_activated), true)
                     fab.setImageDrawable(resources.getDrawable(R.drawable.edit))
                     mainbottomappbar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
+                    mainbottomappbar.replaceMenu(R.menu.view_fragment_menu_items)
                 }
             }
         }

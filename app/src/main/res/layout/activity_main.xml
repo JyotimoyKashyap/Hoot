@@ -44,6 +44,7 @@
         app:fabCradleRoundedCornerRadius="25dp"
         app:fabAnimationMode="scale"
         app:layout_anchor="@id/navhostfragment"
-        app:layout_anchorGravity="bottom" />
+        app:layout_anchorGravity="bottom"
+        app:menu="@menu/list_fragment_menu_items"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
