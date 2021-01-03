@@ -2,9 +2,12 @@ package com.example.todoapp
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.animation.ValueAnimator
+import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.animation.LinearInterpolator
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
@@ -17,6 +20,7 @@ import com.google.android.material.bottomappbar.BottomAppBar
 class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener {
 
     private lateinit var binding: ActivityMainBinding
+    val drawableId = intArrayOf(R.drawable.add, R.drawable.done, R.drawable.edit)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,8 +43,6 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                 this@MainActivity
             )
         }
-
-
 
         binding.fab.apply {
             setHideMotionSpecResource(R.animator.fab_hide)
@@ -77,6 +79,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             R.id.todoListFragment ->{
                 binding.run {
                     fab.setImageState(intArrayOf(-android.R.attr.state_activated), true)
+                    fab.setImageDrawable(resources.getDrawable(R.drawable.add))
                     mainbottomappbar.visibility = View.VISIBLE
                     mainbottomappbar.performShow()
                     fab.visibility = View.VISIBLE
@@ -88,12 +91,22 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             R.id.addTodoFragment ->{
                 binding.run {
                     fab.setImageState(intArrayOf(android.R.attr.state_activated), true)
+                    fab.setImageDrawable(resources.getDrawable(R.drawable.done))
                     mainbottomappbar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
 
                 }
             }
+            R.id.viewTodoFragment ->{
+                binding.run {
+                    fab.setImageState(intArrayOf(android.R.attr.state_activated), true)
+                    fab.setImageDrawable(resources.getDrawable(R.drawable.edit))
+                    mainbottomappbar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
+                }
+            }
         }
     }
+
+
 
 
 }

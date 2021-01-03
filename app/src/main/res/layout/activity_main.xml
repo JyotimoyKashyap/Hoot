@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         app:backgroundTint="@color/purple_500"
         app:layout_anchor="@id/mainbottomappbar"
-        android:src="@drawable/ic_add"
+        android:src="@drawable/add"
         app:tint="@color/white"/>
 
     <com.google.android.material.bottomappbar.BottomAppBar
