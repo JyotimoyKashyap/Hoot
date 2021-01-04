@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/container_transform_add"
+    tools:ignore="BottomAppBar"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.AddTodoFragment.AddTodoFragment">
 
@@ -51,7 +53,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/prioritySpinnerAddTodo"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/addBottomAppBar"
         android:layout_marginStart="@dimen/TextInputStartEndMargin"
         android:layout_marginEnd="@dimen/TextInputStartEndMargin"
         android:layout_marginTop="10dp"
@@ -71,6 +73,15 @@
             android:paddingTop="20dp"
             android:paddingBottom="20dp"/>
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/addBottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:menu="@menu/add_fragment_menu_items"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
 
 
 

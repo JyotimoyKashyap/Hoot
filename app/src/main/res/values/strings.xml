@@ -2,6 +2,7 @@
     <string name="app_name">TodoApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="container_transform_name">transform_to_add</string>
 
     <string-array name="priorities">
         <item>High Priority</item>

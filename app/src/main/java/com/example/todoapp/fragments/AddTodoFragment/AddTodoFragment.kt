@@ -1,13 +1,12 @@
 package com.example.todoapp.fragments.AddTodoFragment
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.todoapp.R
 import com.example.todoapp.databinding.FragmentAddTodoBinding
-import com.example.todoapp.databinding.FragmentTodoListBinding
+import com.google.android.material.transition.MaterialSharedAxis
 
 
 class AddTodoFragment : Fragment() {
@@ -22,6 +21,21 @@ class AddTodoFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentAddTodoBinding.inflate(inflater, container, false)
+        enterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true)
+        reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false)
+
+
+
+
+        binding.addBottomAppBar.setOnMenuItemClickListener {
+            when(it.itemId){
+                R.id.menu_priority_select ->{
+                    true
+                }
+                else -> false
+            }
+        }
+
 
 
 
@@ -32,5 +46,6 @@ class AddTodoFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 
 }

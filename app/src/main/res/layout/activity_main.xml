@@ -24,28 +24,9 @@
         app:layout_anchor="@id/actionbar"
         app:layout_anchorGravity="bottom"
         android:layout_marginTop="?actionBarSize"
-        android:layout_marginBottom="?actionBarSize"
         app:navGraph="@navigation/my_nav" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:backgroundTint="@color/purple_500"
-        app:layout_anchor="@id/mainbottomappbar"
-        android:src="@drawable/add"
-        app:tint="@color/white"/>
 
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/mainbottomappbar"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:layout_gravity="bottom"
-        app:fabAlignmentMode="end"
-        app:fabCradleRoundedCornerRadius="25dp"
-        app:fabAnimationMode="scale"
-        app:layout_anchor="@id/navhostfragment"
-        app:layout_anchorGravity="bottom"
-        app:menu="@menu/list_fragment_menu_items"/>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

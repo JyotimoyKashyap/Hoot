@@ -19,7 +19,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_anchorGravity="bottom"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 
@@ -35,6 +34,30 @@
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         android:visibility="gone" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/listFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@color/purple_500"
+        android:src="@drawable/add"
+        app:tint="@color/white"
+        app:borderWidth="5dp"
+        app:layout_anchor="@id/listBottomappbar"/>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/listBottomappbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:menu="@menu/list_fragment_menu_items"
+        android:layout_gravity="bottom"
+        app:layout_anchor="@id/recyclerView"
+        app:layout_anchorGravity="bottom"
+        app:fabCradleRoundedCornerRadius="15dp"
+        app:fabAlignmentMode="center"
+        app:fabCradleMargin="7dp"/>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -22,6 +22,18 @@
     </style>
 
 
+    <!-- Custom Bottom Sheet -->
+    <style name="CustomBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="shapeAppearanceOverlay">@style/CustomBottomSheetShapeAppearance</item>
+    </style>
+
+    <style name="CustomBottomSheetShapeAppearance" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">10dp</item>
+        <item name="cornerSizeTopRight">10dp</item>
+    </style>
+
+
 
 
 
