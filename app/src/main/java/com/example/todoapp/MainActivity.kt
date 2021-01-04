@@ -124,6 +124,12 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                     mainbottomappbar.replaceMenu(R.menu.view_fragment_menu_items)
                 }
             }
+            R.id.updateTodoFragment ->{
+                binding.run {
+                    fab.setImageState(intArrayOf(android.R.attr.state_activated), true)
+                    fab.setImageDrawable(resources.getDrawable(R.drawable.done))
+                }
+            }
 
         }
     }

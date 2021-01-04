@@ -33,6 +33,8 @@ class TodoListFragment : Fragment() {
         inflater.inflate(R.menu.search_fragment_menu_items, menu)
     }
 
+
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
