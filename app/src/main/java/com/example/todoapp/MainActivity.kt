@@ -10,6 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.animation.LinearInterpolator
+import android.widget.Toast
 import android.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -20,7 +21,7 @@ import com.example.todoapp.databinding.ActivityMainBinding
 import com.google.android.material.bottomappbar.BottomAppBar
 
 
-class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener {
+class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener{
 
     private lateinit var binding: ActivityMainBinding
     val drawableId = intArrayOf(R.drawable.add, R.drawable.done, R.drawable.edit)
@@ -87,19 +88,17 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                     fab.setImageDrawable(resources.getDrawable(R.drawable.add))
                     mainbottomappbar.visibility = View.VISIBLE
                     mainbottomappbar.performShow()
-                    fab.visibility = View.VISIBLE
+                    fab.show()
                     mainbottomappbar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
                     mainbottomappbar.replaceMenu(R.menu.list_fragment_menu_items)
                     mainbottomappbar.setOnMenuItemClickListener { it ->
                         when (it.itemId) {
                             R.id.menu_delete_all -> {
                                 //do the task
+                                Toast.makeText(this@MainActivity, "deleted", Toast.LENGTH_SHORT).show()
                                 true
                             }
-                            R.id.menu_search ->{
-                                //do the task
-                                true
-                            }
+
                             else -> false
                         }
                     }
@@ -125,10 +124,9 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                     mainbottomappbar.replaceMenu(R.menu.view_fragment_menu_items)
                 }
             }
+
         }
     }
-
-
 
 
 }

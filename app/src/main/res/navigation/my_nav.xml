@@ -16,9 +16,6 @@
         <action
             android:id="@+id/action_todoListFragment_to_viewTodoFragment"
             app:destination="@id/viewTodoFragment" />
-        <action
-            android:id="@+id/action_todoListFragment_to_searchTodoFragment"
-            app:destination="@id/searchTodoFragment" />
     </fragment>
     <fragment
         android:id="@+id/addTodoFragment"
@@ -64,14 +61,5 @@
             app:popUpTo="@id/my_nav"
             app:popUpToInclusive="true"
             app:launchSingleTop="true"/>
-    </fragment>
-    <fragment
-        android:id="@+id/searchTodoFragment"
-        android:name="com.example.todoapp.fragments.SearchTodoFragment.SearchTodoFragment"
-        android:label="fragment_search_todo"
-        tools:layout="@layout/fragment_search_todo" >
-        <action
-            android:id="@+id/action_searchTodoFragment_to_todoListFragment"
-            app:destination="@id/todoListFragment" />
     </fragment>
 </navigation>

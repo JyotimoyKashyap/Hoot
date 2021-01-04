@@ -8,12 +8,6 @@
         android:title="Delete All"
         app:showAsAction="always"
         android:icon="@drawable/delete"/>
-    <item
-        android:orderInCategory="300"
-        android:id="@+id/menu_search"
-        android:title="Search"
-        android:icon="@drawable/search"
-        app:showAsAction="always"/>
 
     <group android:checkableBehavior="single"
         android:orderInCategory="100">
