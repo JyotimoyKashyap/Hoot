@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.example.todoapp.R
 import com.example.todoapp.databinding.FragmentTodoListBinding
@@ -26,9 +27,11 @@ class TodoListFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
+        val extras = FragmentNavigatorExtras(binding.listFab to resources.getString(R.string.container_transform_name))
+
         binding.run {
             listFab.setOnClickListener {
-                findNavController().navigate(R.id.action_todoListFragment_to_addTodoFragment)
+                findNavController().navigate(R.id.action_todoListFragment_to_addTodoFragment, null, null, extras)
             }
         }
 

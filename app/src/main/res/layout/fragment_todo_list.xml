@@ -42,7 +42,7 @@
         app:backgroundTint="@color/purple_500"
         android:src="@drawable/add"
         app:tint="@color/white"
-        app:borderWidth="5dp"
+        android:transitionName="@string/container_transform_name"
         app:layout_anchor="@id/listBottomappbar"/>
 
     <com.google.android.material.bottomappbar.BottomAppBar
