@@ -6,9 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.todoapp.R
+import com.example.todoapp.databinding.FragmentAddTodoBinding
+import com.example.todoapp.databinding.FragmentTodoListBinding
 
 
 class AddTodoFragment : Fragment() {
+
+    private var _binding: FragmentAddTodoBinding? = null
+    private val binding get() = _binding!!
 
 
     override fun onCreateView(
@@ -16,7 +21,16 @@ class AddTodoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_todo, container, false)
+        _binding = FragmentAddTodoBinding.inflate(inflater, container, false)
+
+
+
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }
