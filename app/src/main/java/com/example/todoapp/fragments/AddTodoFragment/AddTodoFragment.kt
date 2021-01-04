@@ -6,6 +6,8 @@ import android.os.Handler
 import android.os.Looper
 import android.text.TextUtils
 import android.view.*
+import android.widget.Adapter
+import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -41,6 +43,8 @@ class AddTodoFragment : Fragment() {
             startContainerColor = Color.WHITE
             endContainerColor = Color.WHITE
         }
+
+
 
 
         binding.addBottomAppBar.setOnMenuItemClickListener {
