@@ -48,7 +48,7 @@
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/listBottomappbar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="?actionBarSize"
         android:clickable="true"
         android:focusable="true"
         app:menu="@menu/list_fragment_menu_items"

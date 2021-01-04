@@ -22,7 +22,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <EditText
-            android:id="@+id/addTodoEditText"
+            android:id="@+id/addTodoTitleEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Task"
@@ -54,7 +54,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/prioritySpinnerAddTodo"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/addBottomAppBar"
         android:layout_marginStart="@dimen/TextInputStartEndMargin"
         android:layout_marginEnd="@dimen/TextInputStartEndMargin"
         android:layout_marginTop="10dp"
@@ -75,17 +75,14 @@
             android:paddingBottom="20dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addFab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:backgroundTint="@color/purple_500"
-        android:src="@drawable/done"
-        app:tint="@color/white"
-        app:borderWidth="5dp"
-        android:layout_margin="20dp"
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/addBottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:menu="@menu/add_fragment_menu_items"/>
 
 
 
