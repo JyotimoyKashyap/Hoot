@@ -79,7 +79,7 @@ class AddTodoFragment : Fragment() {
 
                 mTodoViewModel.insertData(newData)
                 Toast.makeText(context, "Todo Added" , Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.action_addTodoFragment_to_todoListFragment)
+                findNavController().popBackStack()
             }else Toast.makeText(context, "Please fill out all fields", Toast.LENGTH_SHORT).show()
         }
 
