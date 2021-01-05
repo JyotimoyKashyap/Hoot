@@ -1,6 +1,7 @@
 package com.example.todoapp.fragments.TodoListFragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
@@ -11,16 +12,17 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.todoapp.R
+import com.example.todoapp.data.models.TodoData
 import com.example.todoapp.data.viewmodel.TodoViewModel
 import com.example.todoapp.databinding.FragmentTodoListBinding
 import com.google.android.material.transition.MaterialElevationScale
 
 
-class TodoListFragment : Fragment() {
+class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener{
 
     private var _binding: FragmentTodoListBinding? = null
     private val binding get() = _binding!!
-    private val todoListAdapter : TodoListAdapter by lazy { TodoListAdapter() }
+    private val todoListAdapter : TodoListAdapter by lazy { TodoListAdapter(this) }
     private val todoViewModel : TodoViewModel by viewModels()
 
 
@@ -81,5 +83,16 @@ class TodoListFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onTodoClicked(cardView: View, todoData: TodoData) {
+        exitTransition = MaterialElevationScale(false).apply {
+            duration = 300.toLong()
+        }
+        reenterTransition = MaterialElevationScale(true).apply {
+            duration = 300.toLong()
+        }
+        val directions = TodoListFragmentDirections.actionTodoListFragmentToUpdateTodoFragment()
+        findNavController().navigate(directions)
     }
 }

@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.core.content.ContextCompat
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todoapp.R
 import com.example.todoapp.data.models.Priority
@@ -13,10 +15,9 @@ import com.example.todoapp.data.models.TodoData
 import com.example.todoapp.databinding.RowLayoutBinding
 import java.util.zip.Inflater
 
-class TodoListAdapter : RecyclerView.Adapter<TodoListAdapter.MyViewHolder>() {
+class TodoListAdapter(private val listener : TodoAdapterListener) : RecyclerView.Adapter<TodoListAdapter.MyViewHolder>() {
 
     var dataList = emptyList<TodoData>()
-
 
     class MyViewHolder(val viewBinding: RowLayoutBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
@@ -54,9 +55,13 @@ class TodoListAdapter : RecyclerView.Adapter<TodoListAdapter.MyViewHolder>() {
                     )
                 )
             }
+            //extras for the material container transform
+            val extras = FragmentNavigatorExtras(todoCardItem to "container_transform_for_row_item")
 
-            //setting up to view the data
-
+            //on item clicked
+            todoCardItem.setOnClickListener{
+                listener.onTodoClicked(todoCardItem, dataList[position])
+            }
 
 
         }
@@ -71,5 +76,9 @@ class TodoListAdapter : RecyclerView.Adapter<TodoListAdapter.MyViewHolder>() {
 
     override fun getItemCount(): Int {
         return dataList.size
+    }
+
+    interface TodoAdapterListener{
+        fun onTodoClicked(cardView: View, todoData: TodoData)
     }
 }
