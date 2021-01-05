@@ -13,4 +13,7 @@
     <color name="red">#FF6565</color>
     <color name="yellow">#FDFB54</color>
     <color name="green">#6AFB7E</color>
+
+    <!-- colors for the materia container transform -->
+    <color name="tranform_color">#FFF</color>
 </resources>

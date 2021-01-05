@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.FragmentNavigatorExtras
@@ -31,8 +32,13 @@ class TodoListFragment : Fragment() {
         reenterTransition = MaterialElevationScale(true)
         _binding = FragmentTodoListBinding.inflate(inflater, container, false)
 
+        //postpone enter transition
+        postponeEnterTransition()
+        binding.root.doOnPreDraw { startPostponedEnterTransition() }
+
         //for the options menu on top of action bar or toolbar
         setHasOptionsMenu(true)
+        binding.listBottomappbar.performShow()
 
 
 
@@ -55,6 +61,7 @@ class TodoListFragment : Fragment() {
             // this is for the floating action button to add
             listFab.setOnClickListener {
                 findNavController().navigate(R.id.action_todoListFragment_to_addTodoFragment, null, null, extras)
+                listBottomappbar.performHide()
             }
         }
 

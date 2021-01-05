@@ -14,8 +14,8 @@
             android:id="@+id/action_todoListFragment_to_addTodoFragment"
             app:destination="@id/addTodoFragment" />
         <action
-            android:id="@+id/action_todoListFragment_to_viewTodoFragment"
-            app:destination="@id/viewTodoFragment" />
+            android:id="@+id/action_todoListFragment_to_updateTodoFragment"
+            app:destination="@id/updateTodoFragment" />
     </fragment>
     <fragment
         android:id="@+id/addTodoFragment"
@@ -32,23 +32,8 @@
         android:label="Update"
         tools:layout="@layout/fragment_update_todo" >
         <action
-            android:id="@+id/action_updateTodoFragment_to_viewTodoFragment"
-            app:destination="@id/viewTodoFragment" />
-        <action
             android:id="@+id/action_updateTodoFragment_to_todoListFragment"
             app:destination="@id/todoListFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/viewTodoFragment"
-        android:name="com.example.todoapp.fragments.ViewTodoFragment.ViewTodoFragment"
-        android:label="View"
-        tools:layout="@layout/fragment_view_todo" >
-        <action
-            android:id="@+id/action_viewTodoFragment_to_todoListFragment"
-            app:destination="@id/todoListFragment" />
-        <action
-            android:id="@+id/action_viewTodoFragment_to_updateTodoFragment"
-            app:destination="@id/updateTodoFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashScreenFragment"

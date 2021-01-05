@@ -55,6 +55,9 @@ class TodoListAdapter : RecyclerView.Adapter<TodoListAdapter.MyViewHolder>() {
                 )
             }
 
+            //setting up to view the data
+
+
 
         }
 

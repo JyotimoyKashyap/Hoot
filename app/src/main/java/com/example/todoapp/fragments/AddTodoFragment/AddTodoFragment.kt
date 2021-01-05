@@ -39,9 +39,9 @@ class AddTodoFragment : Fragment() {
         sharedElementEnterTransition = MaterialContainerTransform().apply {
             setPathMotion(MaterialArcMotion())
             scrimColor = Color.TRANSPARENT
-            containerColor = Color.WHITE
-            startContainerColor = Color.WHITE
-            endContainerColor = Color.WHITE
+            containerColor = activity?.resources?.getColor(R.color.tranform_color)!!
+            startContainerColor = activity?.resources?.getColor(R.color.tranform_color)!!
+            endContainerColor = activity?.resources?.getColor(R.color.tranform_color)!!
         }
 
 
