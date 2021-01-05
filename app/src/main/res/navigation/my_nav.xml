@@ -34,6 +34,12 @@
         <action
             android:id="@+id/action_updateTodoFragment_to_todoListFragment"
             app:destination="@id/todoListFragment" />
+        <argument
+            android:name="currentItem"
+            app:argType="com.example.todoapp.data.models.TodoData" />
+        <argument
+            android:name="currentItemId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/splashScreenFragment"

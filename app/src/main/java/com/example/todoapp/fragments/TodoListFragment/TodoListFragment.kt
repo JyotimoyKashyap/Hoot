@@ -30,8 +30,12 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener{
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         (activity as AppCompatActivity).supportActionBar?.show()
-        exitTransition = MaterialElevationScale(false)
-        reenterTransition = MaterialElevationScale(true)
+        exitTransition = MaterialElevationScale(false).apply {
+            duration = 300.toLong()
+        }
+        reenterTransition = MaterialElevationScale(true).apply {
+            duration = 300.toLong()
+        }
         _binding = FragmentTodoListBinding.inflate(inflater, container, false)
 
         //postpone enter transition
@@ -92,7 +96,9 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener{
         reenterTransition = MaterialElevationScale(true).apply {
             duration = 300.toLong()
         }
-        val directions = TodoListFragmentDirections.actionTodoListFragmentToUpdateTodoFragment()
-        findNavController().navigate(directions)
+        val todoDetailTransitionName = getString(R.string.todo_detail_transform)
+        val extras = FragmentNavigatorExtras(cardView to todoDetailTransitionName)
+        val directions = TodoListFragmentDirections.actionTodoListFragmentToUpdateTodoFragment(todoData, todoData.id)
+        findNavController().navigate(directions, extras)
     }
 }

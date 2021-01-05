@@ -57,6 +57,7 @@ class TodoListAdapter(private val listener : TodoAdapterListener) : RecyclerView
             }
             //extras for the material container transform
             val extras = FragmentNavigatorExtras(todoCardItem to "container_transform_for_row_item")
+            todoCardItem.transitionName = (R.string.todo_item_card + dataList[position].id).toString()
 
             //on item clicked
             todoCardItem.setOnClickListener{

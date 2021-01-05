@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import com.example.todoapp.R
+import com.example.todoapp.data.models.Priority
 import com.example.todoapp.databinding.FragmentUpdateTodoBinding
 import com.google.android.material.transition.MaterialArcMotion
 import com.google.android.material.transition.MaterialContainerTransform
@@ -16,6 +18,7 @@ class UpdateTodoFragment : Fragment() {
 
     private var _binding : FragmentUpdateTodoBinding? = null
     private val binding get() = _binding!!
+    private val args by navArgs<UpdateTodoFragmentArgs>()
 
 
 
@@ -35,11 +38,27 @@ class UpdateTodoFragment : Fragment() {
             endContainerColor = activity?.resources?.getColor(R.color.tranform_color)!!
         }
 
+
+
+        binding.run {
+            updateTodoEditText.setText(args.currentItem.title)
+            updateTodoDescEditText.setText(args.currentItem.desc)
+            prioritySpinnerUpdateTodo.setSelection(parsePriority(args.currentItem.priority))
+        }
+
         return binding.root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun parsePriority(priority: Priority) : Int{
+        return when(priority){
+            Priority.HIGH -> 0
+            Priority.MEDIUM -> 1
+            Priority.LOW -> 2
+        }
     }
 }

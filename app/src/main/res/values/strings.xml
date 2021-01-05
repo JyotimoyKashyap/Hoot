@@ -4,6 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="container_transform_name">transform_to_add</string>
     <string name="todo_detail_transform">todo_detail_transition</string>
+    <string name="todo_item_card">todo_item_%1$d</string>
 
     <string-array name="priorities">
         <item>High Priority</item>
