@@ -10,7 +10,7 @@
 
     <color name="background">#FFF</color>
 
-    <color name="red">#D30F0F</color>
-    <color name="yellow">#DFBD12</color>
-    <color name="green">#35E60C</color>
+    <color name="red">#FF6565</color>
+    <color name="yellow">#FDFB54</color>
+    <color name="green">#6AFB7E</color>
 </resources>
