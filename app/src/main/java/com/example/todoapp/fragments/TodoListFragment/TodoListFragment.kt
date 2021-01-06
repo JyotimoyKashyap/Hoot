@@ -16,6 +16,7 @@ import com.example.todoapp.data.models.TodoData
 import com.example.todoapp.data.viewmodel.TodoViewModel
 import com.example.todoapp.databinding.FragmentTodoListBinding
 import com.google.android.material.transition.MaterialElevationScale
+import com.google.android.material.transition.MaterialSharedAxis
 
 
 class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener{
@@ -36,6 +37,7 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener{
         reenterTransition = MaterialElevationScale(true).apply {
             duration = 300.toLong()
         }
+        enterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true)
         _binding = FragmentTodoListBinding.inflate(inflater, container, false)
 
         //postpone enter transition

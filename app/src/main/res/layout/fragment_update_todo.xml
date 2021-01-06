@@ -24,6 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Task"
+            android:fontFamily="@font/poppins_semibold"
             android:paddingStart="24dp"
             android:paddingEnd="24dp"
             android:inputType="text"/>
@@ -67,6 +68,7 @@
             android:inputType="textMultiLine"
             android:gravity="start"
             android:ems="10"
+            android:fontFamily="@font/poppins_light"
             android:paddingStart="24dp"
             android:paddingEnd="24dp"
             android:paddingTop="20dp"

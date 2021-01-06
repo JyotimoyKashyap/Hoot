@@ -36,24 +36,27 @@ class TodoListAdapter(private val listener : TodoAdapterListener) : RecyclerView
 
             val priority = dataList[position].priority
             when (priority) {
-                Priority.HIGH -> priorityIndicator.setCardBackgroundColor(
+                Priority.HIGH -> {priorityIndicator.setCardBackgroundColor(
                     ContextCompat.getColor(
                         holder.viewBinding.root.context,
                         R.color.red
                     )
                 )
-                Priority.MEDIUM -> priorityIndicator.setCardBackgroundColor(
+                    }
+                Priority.MEDIUM -> {priorityIndicator.setCardBackgroundColor(
                     ContextCompat.getColor(
                         holder.viewBinding.root.context,
                         R.color.yellow
                     )
                 )
-                Priority.LOW -> priorityIndicator.setCardBackgroundColor(
+                    }
+                Priority.LOW -> {priorityIndicator.setCardBackgroundColor(
                     ContextCompat.getColor(
                         holder.viewBinding.root.context,
                         R.color.green
                     )
                 )
+                    }
             }
             //extras for the material container transform
             val extras = FragmentNavigatorExtras(todoCardItem to "container_transform_for_row_item")

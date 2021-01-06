@@ -28,6 +28,7 @@
             android:hint="Task"
             android:paddingStart="24dp"
             android:paddingEnd="24dp"
+            android:fontFamily="@font/poppins_semibold"
             android:inputType="text"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,6 +71,7 @@
             android:gravity="start"
             android:ems="10"
             android:paddingStart="24dp"
+            android:fontFamily="@font/poppins_light"
             android:paddingEnd="24dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"/>
