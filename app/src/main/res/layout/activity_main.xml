@@ -14,8 +14,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:titleTextColor="@color/title_text_color"
-        app:titleTextAppearance="@style/AppBarTitleTextAppearance"
         app:titleMarginTop="20dp"
+        app:titleTextAppearance="@style/AppBarTitleTextAppearance"
+        android:animateLayoutChanges="true"
         app:menu="@menu/search_fragment_menu_items"/>
 
     <fragment

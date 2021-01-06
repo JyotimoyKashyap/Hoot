@@ -22,6 +22,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.todoapp.databinding.ActivityMainBinding
 import com.example.todoapp.fragments.AddTodoFragment.AddTodoFragmentDirections
 import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.transition.MaterialFadeThrough
 import com.google.android.material.transition.MaterialSharedAxis
 
 
@@ -43,9 +44,11 @@ class MainActivity : AppCompatActivity(){
 
         setSupportActionBar(binding.actionbar)
 
+
         val appBarConfiguration = AppBarConfiguration
             .Builder(R.id.todoListFragment)
             .build()
+
 
         setupActionBarWithNavController(findNavController(R.id.navhostfragment), appBarConfiguration)
         supportActionBar?.elevation = 0f
