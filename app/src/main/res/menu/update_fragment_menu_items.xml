@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_update"
+        android:title="Update"
+        android:icon="@drawable/done"
+        app:showAsAction="always"
+        android:orderInCategory="100"/>
+    <item
+        android:id="@+id/menu_delete_single"
+        android:title="Delete"
+        android:icon="@drawable/delete"
+        app:showAsAction="always"/>
+
+</menu>

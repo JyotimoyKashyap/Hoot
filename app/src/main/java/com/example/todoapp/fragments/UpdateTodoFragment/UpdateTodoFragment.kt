@@ -6,12 +6,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.todoapp.R
 import com.example.todoapp.data.models.Priority
+import com.example.todoapp.data.models.TodoData
+import com.example.todoapp.data.viewmodel.TodoViewModel
 import com.example.todoapp.databinding.FragmentUpdateTodoBinding
 import com.example.todoapp.fragments.SharedViewModel
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialArcMotion
 import com.google.android.material.transition.MaterialContainerTransform
 
@@ -22,6 +27,7 @@ class UpdateTodoFragment : Fragment() {
     private val binding get() = _binding!!
     private val args by navArgs<UpdateTodoFragmentArgs>()
     private val sharedViewModel : SharedViewModel by viewModels()
+    private val todoViewModel : TodoViewModel by viewModels()
 
 
 
@@ -47,9 +53,51 @@ class UpdateTodoFragment : Fragment() {
             updateTodoEditText.setText(args.currentItem.title)
             updateTodoDescEditText.setText(args.currentItem.desc)
             prioritySpinnerUpdateTodo.setSelection(sharedViewModel.parsePriorityToInt(args.currentItem.priority))
+
+            //bottom app bar item selector
+            updateBottomAppBar.setOnMenuItemClickListener {
+                when(it.itemId){
+                    R.id.menu_update ->{
+                        updateTodo()
+                        true
+                    }
+                    R.id.menu_delete_single ->{
+                        true
+                    }
+                    else -> false
+                }
+            }
         }
 
         return binding.root
+    }
+
+    private fun updateTodo() {
+        binding.run {
+            val title = updateTodoEditText.text.toString()
+            val desc = updateTodoDescEditText.text.toString()
+            val getPriority = prioritySpinnerUpdateTodo.selectedItem.toString()
+
+            val validation = sharedViewModel.verifyDataFromUser(title, desc)
+
+            if(validation){
+                //update current item
+                val updateItem = TodoData(
+                    args.currentItem.id,
+                    title,
+                    sharedViewModel.parsePriority(getPriority),
+                    desc
+                )
+
+                todoViewModel.updateData(updateItem)
+                Toast.makeText(context,"Todo Updated", Toast.LENGTH_SHORT).show()
+
+                //now navigate back to the previous fragment
+                findNavController().popBackStack()
+            }else{
+                Toast.makeText(context, "Please fill in all the details" , Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun onDestroyView() {
