@@ -3,6 +3,7 @@ package com.example.todoapp.fragments.TodoListFragment
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.doOnPreDraw
@@ -15,6 +16,7 @@ import com.example.todoapp.R
 import com.example.todoapp.data.models.TodoData
 import com.example.todoapp.data.viewmodel.TodoViewModel
 import com.example.todoapp.databinding.FragmentTodoListBinding
+import com.example.todoapp.fragments.SharedViewModel
 import com.google.android.material.transition.MaterialElevationScale
 import com.google.android.material.transition.MaterialSharedAxis
 
@@ -25,6 +27,7 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener{
     private val binding get() = _binding!!
     private val todoListAdapter : TodoListAdapter by lazy { TodoListAdapter(this) }
     private val todoViewModel : TodoViewModel by viewModels()
+    private val sharedViewModel : SharedViewModel by viewModels()
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +51,11 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener{
         setHasOptionsMenu(true)
         binding.listBottomappbar.performShow()
 
+        //observer for empty data
+        sharedViewModel.emptyDatabase.observe(viewLifecycleOwner, Observer {
+            showEmptyDatabaseView(it)
+        })
+
 
 
         //for passing the shared view for material container transform
@@ -61,6 +69,7 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener{
 
             //setting up ViewModel for the data retrieval
             todoViewModel.getAllData.observe(viewLifecycleOwner, Observer {
+                sharedViewModel.checkIfDatabaseEmpty(it)
                 todoListAdapter.setData(it)
             })
 
@@ -88,8 +97,26 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener{
 
 
 
+
+
         //returning view root for layout inflation
         return binding.root
+    }
+
+    private fun showEmptyDatabaseView(emptyDatabase : Boolean) {
+        binding.run {
+            val animationUtils = AnimationUtils.loadAnimation(context, R.anim.fade_in)
+            if(emptyDatabase){
+                todoListLottieAnim.animation = animationUtils
+                emptyDataTxt.animation = animationUtils
+                todoListLottieAnim.visibility = View.VISIBLE
+                emptyDataTxt.visibility = View.VISIBLE
+            }else{
+                todoListLottieAnim.visibility = View.INVISIBLE
+                emptyDataTxt.visibility = View.INVISIBLE
+            }
+        }
+
     }
 
     private fun confirmDeleteAll() {
