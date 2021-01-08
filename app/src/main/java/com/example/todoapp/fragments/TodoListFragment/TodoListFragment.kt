@@ -71,12 +71,30 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener{
                 findNavController().navigate(R.id.action_todoListFragment_to_addTodoFragment, null, null, extras)
                 listBottomappbar.performHide()
             }
+
+            //handling click events in bottom App bar
+            listBottomappbar.setOnMenuItemClickListener {
+                when(it.itemId){
+                    R.id.menu_delete_all ->{
+                        confirmDeleteAll()
+                        true
+                    }
+                    R.id.menu_sort_by ->{
+                        true
+                    }else -> false
+                }
+            }
         }
 
 
 
         //returning view root for layout inflation
         return binding.root
+    }
+
+    private fun confirmDeleteAll() {
+        val deleteAllBottomSheetDialogFragment = DeleteAllBottomSheetDialogFragment()
+        deleteAllBottomSheetDialogFragment.show(parentFragmentManager, "Delete")
     }
 
 

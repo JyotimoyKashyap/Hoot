@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_todoListFragment_to_updateTodoFragment"
             app:destination="@id/updateTodoFragment" />
+        <action
+            android:id="@+id/action_todoListFragment_to_deleteAllBottomSheetDialogFragment"
+            app:destination="@id/deleteAllBottomSheetDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/addTodoFragment"
@@ -65,4 +68,9 @@
             android:name="currentDeleteItem"
             app:argType="com.example.todoapp.data.models.TodoData" />
     </dialog>
+    <fragment
+        android:id="@+id/deleteAllBottomSheetDialogFragment"
+        android:name="com.example.todoapp.fragments.TodoListFragment.DeleteAllBottomSheetDialogFragment"
+        android:label="fragment_delete_all_bottom_sheet_dialog"
+        tools:layout="@layout/fragment_delete_all_bottom_sheet_dialog" />
 </navigation>
