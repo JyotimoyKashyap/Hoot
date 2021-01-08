@@ -62,6 +62,7 @@ class UpdateTodoFragment : Fragment() {
                         true
                     }
                     R.id.menu_delete_single ->{
+                        confirmDeleteTodo()
                         true
                     }
                     else -> false
@@ -71,6 +72,11 @@ class UpdateTodoFragment : Fragment() {
 
         return binding.root
     }
+
+    private fun confirmDeleteTodo() {
+        
+    }
+
 
     private fun updateTodo() {
         binding.run {

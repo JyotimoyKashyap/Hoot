@@ -15,4 +15,8 @@ class TodoRepository(private val todoDao: TodoDao) {
     suspend fun updateData(todoData: TodoData){
         todoDao.updateData(todoData)
     }
+
+    suspend fun deleteSingleData(todoData: TodoData){
+        todoDao.deleteSingleData(todoData)
+    }
 }

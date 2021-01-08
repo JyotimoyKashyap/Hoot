@@ -40,6 +40,9 @@
         <argument
             android:name="currentItemId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_updateTodoFragment_to_deleteBottomSheetDialogFragment"
+            app:destination="@id/deleteBottomSheetDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashScreenFragment"
@@ -53,4 +56,9 @@
             app:popUpToInclusive="true"
             app:launchSingleTop="true"/>
     </fragment>
+    <dialog
+        android:id="@+id/deleteBottomSheetDialogFragment"
+        android:name="com.example.todoapp.fragments.UpdateTodoFragment.DeleteBottomSheetDialogFragment"
+        android:label="fragment_delete_bottom_sheet_dialog"
+        tools:layout="@layout/fragment_delete_bottom_sheet_dialog" />
 </navigation>
