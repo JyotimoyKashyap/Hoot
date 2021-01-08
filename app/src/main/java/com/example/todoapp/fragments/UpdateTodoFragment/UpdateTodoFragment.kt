@@ -74,7 +74,24 @@ class UpdateTodoFragment : Fragment() {
     }
 
     private fun confirmDeleteTodo() {
-        findNavController().navigate(R.id.action_updateTodoFragment_to_deleteBottomSheetDialogFragment)
+        binding.run {
+            val title = updateTodoEditText.text.toString()
+            val desc = updateTodoDescEditText.text.toString()
+            val getPriority = prioritySpinnerUpdateTodo.selectedItem.toString()
+
+            //will be deleted tododata
+            val deleteItem = TodoData(
+                args.currentItem.id,
+                title,
+                sharedViewModel.parsePriority(getPriority),
+                desc
+            )
+
+
+            val directions = UpdateTodoFragmentDirections.actionUpdateTodoFragmentToDeleteBottomSheetDialogFragment(deleteItem)
+            findNavController().navigate(directions)
+        }
+
     }
 
 

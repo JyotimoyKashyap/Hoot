@@ -60,5 +60,9 @@
         android:id="@+id/deleteBottomSheetDialogFragment"
         android:name="com.example.todoapp.fragments.UpdateTodoFragment.DeleteBottomSheetDialogFragment"
         android:label="fragment_delete_bottom_sheet_dialog"
-        tools:layout="@layout/fragment_delete_bottom_sheet_dialog" />
+        tools:layout="@layout/fragment_delete_bottom_sheet_dialog" >
+        <argument
+            android:name="currentDeleteItem"
+            app:argType="com.example.todoapp.data.models.TodoData" />
+    </dialog>
 </navigation>
