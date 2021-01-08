@@ -14,9 +14,13 @@
         <!-- Customize your theme here. -->
         <item name="android:actionBarStyle">@style/AppBarTitleTextAppearance</item>
 
+        <!-- Bottom Sheet Dialog Theme -->
+        <item name="bottomSheetDialogTheme">@style/CustomModalBottomSheet</item>
+
 
     </style>
 
+    <!-- Custom App Bar Title -->
     <style name="AppBarTitleTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
             <item name="fontFamily">@font/poppins_semibold</item>
             <item name="android:textSize">28dp</item>
@@ -24,11 +28,14 @@
 
 
     <!-- Custom Bottom Sheet -->
+    <style name="CustomModalBottomSheet" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/CustomBottomSheet</item>
+    </style>
     <style name="CustomBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
         <item name="shapeAppearanceOverlay">@style/CustomBottomSheetShapeAppearance</item>
     </style>
 
-    <style name="CustomBottomSheetShapeAppearance" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+    <style name="CustomBottomSheetShapeAppearance" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopLeft">10dp</item>
         <item name="cornerSizeTopRight">10dp</item>

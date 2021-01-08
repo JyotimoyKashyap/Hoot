@@ -74,7 +74,7 @@ class UpdateTodoFragment : Fragment() {
     }
 
     private fun confirmDeleteTodo() {
-        
+        findNavController().navigate(R.id.action_updateTodoFragment_to_deleteBottomSheetDialogFragment)
     }
 
 
