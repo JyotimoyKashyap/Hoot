@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:id="@+id/container_transform_add"
     tools:ignore="BottomAppBar"
+    android:isScrollContainer="true"
     android:transitionName="@string/container_transform_name"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.AddTodoFragment.AddTodoFragment">
