@@ -1,23 +1,17 @@
-package com.example.todoapp.fragments.TodoListFragment
+package com.example.todoapp.fragments.TodoListFragment.Adapter
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.view.menu.ActionMenuItemView
-import androidx.core.content.ContextCompat
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todoapp.R
-import com.example.todoapp.data.models.Priority
 import com.example.todoapp.data.models.TodoData
 import com.example.todoapp.databinding.RowLayoutBinding
-import java.util.zip.Inflater
 
 class TodoListAdapter(private val listener : TodoAdapterListener) : RecyclerView.Adapter<TodoListAdapter.MyViewHolder>() {
 
-    private var dataList = emptyList<TodoData>()
+    var dataList = emptyList<TodoData>()
 
     class MyViewHolder(val viewBinding: RowLayoutBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
@@ -26,7 +20,7 @@ class TodoListAdapter(private val listener : TodoAdapterListener) : RecyclerView
                 viewBinding.executePendingBindings()
             }
         companion object{
-            fun from(parent: ViewGroup) : MyViewHolder{
+            fun from(parent: ViewGroup) : MyViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = RowLayoutBinding.inflate(layoutInflater, parent, false)
                 return MyViewHolder(binding)
