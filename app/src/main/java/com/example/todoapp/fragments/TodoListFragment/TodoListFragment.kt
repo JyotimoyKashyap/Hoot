@@ -42,6 +42,8 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener{
         }
         enterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true)
         _binding = FragmentTodoListBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = this
+        binding.mSharedViewModel = sharedViewModel
 
         //postpone enter transition
         postponeEnterTransition()
@@ -51,15 +53,6 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener{
         setHasOptionsMenu(true)
         binding.listBottomappbar.performShow()
 
-        //observer for empty data
-        sharedViewModel.emptyDatabase.observe(viewLifecycleOwner, Observer {
-            showEmptyDatabaseView(it)
-        })
-
-
-
-        //for passing the shared view for material container transform
-        val extras = FragmentNavigatorExtras(binding.listFab to resources.getString(R.string.container_transform_name))
 
         binding.run {
             //this is for the recycler view setting
@@ -73,13 +66,6 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener{
                 todoListAdapter.setData(it)
             })
 
-
-
-            // this is for the floating action button to add
-            listFab.setOnClickListener {
-                findNavController().navigate(R.id.action_todoListFragment_to_addTodoFragment, null, null, extras)
-                listBottomappbar.performHide()
-            }
 
             //handling click events in bottom App bar
             listBottomappbar.setOnMenuItemClickListener {
@@ -103,21 +89,6 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener{
         return binding.root
     }
 
-    private fun showEmptyDatabaseView(emptyDatabase : Boolean) {
-        binding.run {
-            val animationUtils = AnimationUtils.loadAnimation(context, R.anim.fade_in)
-            if(emptyDatabase){
-                todoListLottieAnim.animation = animationUtils
-                emptyDataTxt.animation = animationUtils
-                todoListLottieAnim.visibility = View.VISIBLE
-                emptyDataTxt.visibility = View.VISIBLE
-            }else{
-                todoListLottieAnim.visibility = View.INVISIBLE
-                emptyDataTxt.visibility = View.INVISIBLE
-            }
-        }
-
-    }
 
     private fun confirmDeleteAll() {
         val deleteAllBottomSheetDialogFragment = DeleteAllBottomSheetDialogFragment()
