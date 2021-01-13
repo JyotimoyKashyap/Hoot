@@ -22,6 +22,7 @@ import com.example.todoapp.fragments.TodoListFragment.Adapter.TodoListAdapter
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialElevationScale
 import com.google.android.material.transition.MaterialSharedAxis
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 
 
 class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener{
@@ -71,6 +72,11 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener{
                 sharedViewModel.checkIfDatabaseEmpty(it)
                 todoListAdapter.setData(it)
             })
+
+            //adding animation to recycler view
+            recyclerView.itemAnimator = SlideInUpAnimator().apply {
+                addDuration = 300
+            }
 
 
             //handling click events in bottom App bar
@@ -134,7 +140,7 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener{
                 todoListAdapter.notifyItemRemoved(viewHolder.adapterPosition)
 
                 //restore the deleted data
-                restoreDeletedData(viewHolder.itemView, itemToDelete, viewHolder.adapterPosition)
+                restoreDeletedData(viewHolder.itemView, itemToDelete)
             }
         }
 
@@ -142,7 +148,7 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener{
         itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 
-    private fun restoreDeletedData(view : View, deletedItem: TodoData, position : Int){
+    private fun restoreDeletedData(view : View, deletedItem: TodoData){
         val snackbar = Snackbar.make(
             view,
             "Deleted",
@@ -150,7 +156,6 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener{
         )
         snackbar.setAction("Undo"){
             todoViewModel.insertData(deletedItem)
-            todoListAdapter.notifyDataSetChanged()
         }
 
         snackbar.show()

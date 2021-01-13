@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todoapp.R
 import com.example.todoapp.data.models.TodoData
@@ -37,34 +38,6 @@ class TodoListAdapter(private val listener : TodoAdapterListener) : RecyclerView
         val currentItem = dataList[position]
         holder.bind(currentItem)
 
-//        holder.viewBinding.run {
-//            titleTextView.text = dataList[position].title
-//            descTextView.text = dataList[position].desc
-//
-//            val priority = dataList[position].priority
-//            when (priority) {
-//                Priority.HIGH -> {priorityIndicator.setCardBackgroundColor(
-//                    ContextCompat.getColor(
-//                        holder.viewBinding.root.context,
-//                        R.color.red
-//                    )
-//                )
-//                    }
-//                Priority.MEDIUM -> {priorityIndicator.setCardBackgroundColor(
-//                    ContextCompat.getColor(
-//                        holder.viewBinding.root.context,
-//                        R.color.yellow
-//                    )
-//                )
-//                    }
-//                Priority.LOW -> {priorityIndicator.setCardBackgroundColor(
-//                    ContextCompat.getColor(
-//                        holder.viewBinding.root.context,
-//                        R.color.green
-//                    )
-//                )
-//                    }
-//            }
             //extras for the material container transform
             val extras = FragmentNavigatorExtras(holder.viewBinding.todoCardItem to "container_transform_for_row_item")
             holder.viewBinding.todoCardItem.transitionName = (R.string.todo_item_card + dataList[position].id).toString()
@@ -73,16 +46,13 @@ class TodoListAdapter(private val listener : TodoAdapterListener) : RecyclerView
             holder.viewBinding.todoCardItem.setOnClickListener{
                 listener.onTodoClicked(holder.viewBinding.todoCardItem, dataList[position])
             }
-//
-//
-//        }
-
-
     }
 
     fun setData(todoData: List<TodoData>){
+        val todoDiffUtil = TodoDiffUtil(dataList, todoData)
+        val todoDiffResult = DiffUtil.calculateDiff(todoDiffUtil)
         this.dataList = todoData
-        notifyDataSetChanged()
+        todoDiffResult.dispatchUpdatesTo(this)
     }
 
     override fun getItemCount(): Int {
