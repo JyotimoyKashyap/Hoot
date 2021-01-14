@@ -8,7 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="background">#FFF</color>
+    <color name="background">#FAFAFA</color>
 
     <color name="red">#FF6565</color>
     <color name="yellow">#FDFB54</color>
@@ -20,4 +20,5 @@
     <color name="btn_backgroundTint">#F8D4D4</color>
     <color name="btn_iconTint">#F44A4A</color>
     <color name="btn_negativeTextColor">#F44A4A</color>
+    <color name="cardColorBackground">#FFFFFF</color>
 </resources>

@@ -7,4 +7,5 @@
     <color name="btn_backgroundTint">#493E3E</color>
     <color name="btn_iconTint">#F44A4A</color>
     <color name="btn_negativeTextColor">#F44A4A</color>
+    <color name="cardColorBackground">#232323</color>
 </resources>
