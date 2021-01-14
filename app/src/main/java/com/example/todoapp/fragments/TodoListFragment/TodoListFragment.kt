@@ -88,9 +88,15 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener, Searc
                         confirmDeleteAll()
                         true
                     }
-                    R.id.menu_sort_by ->{
+                    R.id.menu_priority_high ->{
+                        todoViewModel.sortByHighPriority.observe(viewLifecycleOwner, Observer {  todoListAdapter.setData(it)})
                         true
-                    }else -> false
+                    }
+                    R.id.menu_priority_low ->{
+                        todoViewModel.sortByLowPriority.observe(viewLifecycleOwner, Observer { todoListAdapter.setData(it) })
+                        true
+                    }
+                    else -> false
                 }
             }
         }
