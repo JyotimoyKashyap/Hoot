@@ -2,6 +2,7 @@ package com.example.todoapp.fragments.TodoListFragment
 
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
@@ -23,9 +24,10 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialElevationScale
 import com.google.android.material.transition.MaterialSharedAxis
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
+import java.text.FieldPosition
 
 
-class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener{
+class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener, SearchView.OnQueryTextListener{
 
     private var _binding: FragmentTodoListBinding? = null
     private val binding get() = _binding!!
@@ -110,6 +112,12 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener{
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.search_fragment_menu_items, menu)
+
+        val search : MenuItem = menu.findItem(R.id.search_)
+        val searchView: SearchView? = search.actionView as? SearchView
+
+        searchView?.isSubmitButtonEnabled = true
+        searchView?.setOnQueryTextListener(this)
     }
 
 
@@ -140,7 +148,7 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener{
                 todoListAdapter.notifyItemRemoved(viewHolder.adapterPosition)
 
                 //restore the deleted data
-                restoreDeletedData(viewHolder.itemView, itemToDelete)
+                restoreDeletedData(viewHolder.itemView, itemToDelete )
             }
         }
 
@@ -159,5 +167,30 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener{
         }
 
         snackbar.show()
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        if(query != null){
+            searchThroughDatabase(query)
+        }
+        return true
+    }
+
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        if(newText != null){
+            searchThroughDatabase(newText)
+        }
+        return true
+    }
+
+    private fun searchThroughDatabase(query: String) {
+        val searchQuery : String  = "%$query%"
+
+        todoViewModel.searchDatabase(searchQuery).observe(this, Observer {list->
+            list?.let {
+                todoListAdapter.setData(it)
+            }
+        })
     }
 }

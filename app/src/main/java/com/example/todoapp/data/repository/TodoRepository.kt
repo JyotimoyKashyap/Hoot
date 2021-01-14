@@ -23,4 +23,8 @@ class TodoRepository(private val todoDao: TodoDao) {
     suspend fun deleteAllData(){
         todoDao.deleteAllDAta()
     }
+
+    fun searchDatabase(searchQuery: String) : LiveData<List<TodoData>>{
+        return todoDao.searchDatabase(searchQuery)
+    }
 }
