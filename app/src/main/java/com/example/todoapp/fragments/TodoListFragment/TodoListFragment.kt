@@ -20,6 +20,7 @@ import com.example.todoapp.data.viewmodel.TodoViewModel
 import com.example.todoapp.databinding.FragmentTodoListBinding
 import com.example.todoapp.fragments.SharedViewModel
 import com.example.todoapp.fragments.TodoListFragment.Adapter.TodoListAdapter
+import com.example.todoapp.fragments.Utils.hideKeyboard
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialElevationScale
 import com.google.android.material.transition.MaterialSharedAxis
@@ -58,6 +59,9 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener, Searc
         //for the options menu on top of action bar or toolbar
         setHasOptionsMenu(true)
         binding.listBottomappbar.performShow()
+
+        //hide soft keyboard when we move to this fragment
+        hideKeyboard(requireActivity())
 
 
         binding.run {
