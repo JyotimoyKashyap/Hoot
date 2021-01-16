@@ -47,7 +47,7 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener, Searc
         reenterTransition = MaterialElevationScale(true).apply {
             duration = 300.toLong()
         }
-        enterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true)
+        enterTransition = MaterialElevationScale(false)
         _binding = FragmentTodoListBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.mSharedViewModel = sharedViewModel

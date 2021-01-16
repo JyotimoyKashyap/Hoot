@@ -16,7 +16,6 @@
         app:titleTextColor="@color/title_text_color"
         app:titleMarginTop="20dp"
         app:titleTextAppearance="@style/AppBarTitleTextAppearance"
-        android:animateLayoutChanges="true"
         app:menu="@menu/search_fragment_menu_items"/>
 
     <fragment

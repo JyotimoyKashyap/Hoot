@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import com.example.todoapp.R
+import com.google.android.material.transition.MaterialElevationScale
 import com.google.android.material.transition.MaterialSharedAxis
 
 
@@ -26,7 +27,7 @@ class SplashScreenFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.hide()
         val view =  inflater.inflate(R.layout.fragment_splash_screen, container, false)
 
-        exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true)
+        exitTransition = MaterialElevationScale(true)
 
         Handler(Looper.getMainLooper()).postDelayed({
             view.findNavController().navigate(R.id.action_splashScreenFragment_to_todoListFragment)
