@@ -25,5 +25,4 @@ class TodoDiffUtil(
                 && oldList[oldItemPosition].desc == newList[newItemPosition].desc
                 && oldList[oldItemPosition].priority == newList[newItemPosition].priority
     }
-
 }

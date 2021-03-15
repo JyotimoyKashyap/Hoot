@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.todoapp.R
@@ -19,6 +20,7 @@ import com.example.todoapp.data.models.TodoData
 import com.example.todoapp.data.viewmodel.TodoViewModel
 import com.example.todoapp.databinding.FragmentTodoListBinding
 import com.example.todoapp.fragments.SharedViewModel
+import com.example.todoapp.fragments.TodoListFragment.Adapter.CustomDiffUtil
 import com.example.todoapp.fragments.TodoListFragment.Adapter.TodoListAdapter
 import com.example.todoapp.fragments.Utils.hideKeyboard
 import com.google.android.material.snackbar.Snackbar
@@ -32,7 +34,7 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener, Searc
 
     private var _binding: FragmentTodoListBinding? = null
     private val binding get() = _binding!!
-    private val todoListAdapter : TodoListAdapter by lazy { TodoListAdapter(this) }
+    private val todoListAdapter : TodoListAdapter by lazy { TodoListAdapter(this, CustomDiffUtil()) }
     private val todoViewModel : TodoViewModel by viewModels()
     private val sharedViewModel : SharedViewModel by viewModels()
 
@@ -76,13 +78,13 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener, Searc
             //setting up ViewModel for the data retrieval
             todoViewModel.getAllData.observe(viewLifecycleOwner, Observer {
                 sharedViewModel.checkIfDatabaseEmpty(it)
-                todoListAdapter.setData(it)
+                todoListAdapter.submitList(it)
             })
 
             //adding animation to recycler view
-            recyclerView.itemAnimator = SlideInUpAnimator().apply {
-                addDuration = 300
-            }
+//            recyclerView.itemAnimator = SlideInUpAnimator().apply {
+//                addDuration = 300
+//            }
 
 
             //handling click events in bottom App bar
@@ -93,11 +95,11 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener, Searc
                         true
                     }
                     R.id.menu_priority_high ->{
-                        todoViewModel.sortByHighPriority.observe(viewLifecycleOwner, Observer {  todoListAdapter.setData(it)})
+                        todoViewModel.sortByHighPriority.observe(viewLifecycleOwner, Observer {  todoListAdapter.submitList(it)})
                         true
                     }
                     R.id.menu_priority_low ->{
-                        todoViewModel.sortByLowPriority.observe(viewLifecycleOwner, Observer { todoListAdapter.setData(it) })
+                        todoViewModel.sortByLowPriority.observe(viewLifecycleOwner, Observer { todoListAdapter.submitList(it) })
                         true
                     }
                     else -> false
@@ -153,7 +155,7 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener, Searc
     fun swipeToDelete(recyclerView: RecyclerView){
         val swipeToDeleteCallback = object : SwipeToDelete(){
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val itemToDelete = todoListAdapter.dataList[viewHolder.adapterPosition]
+                val itemToDelete = todoListAdapter.getTodoAt(viewHolder.adapterPosition)
                 todoViewModel.deleteSingleData(itemToDelete)
                 todoListAdapter.notifyItemRemoved(viewHolder.adapterPosition)
 
@@ -199,7 +201,7 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener, Searc
 
         todoViewModel.searchDatabase(searchQuery).observe(this, Observer {list->
             list?.let {
-                todoListAdapter.setData(it)
+                todoListAdapter.submitList(it)
             }
         })
     }
