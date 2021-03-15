@@ -74,6 +74,7 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener, Searc
             //swipe to delete callback
             swipeToDelete(recyclerView)
 
+            // this is test comment
 
             //setting up ViewModel for the data retrieval
             todoViewModel.getAllData.observe(viewLifecycleOwner, Observer {
