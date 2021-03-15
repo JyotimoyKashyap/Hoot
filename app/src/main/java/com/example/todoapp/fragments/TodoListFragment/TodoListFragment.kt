@@ -82,9 +82,9 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener, Searc
             })
 
             //adding animation to recycler view
-//            recyclerView.itemAnimator = SlideInUpAnimator().apply {
-//                addDuration = 300
-//            }
+            recyclerView.itemAnimator = SlideInUpAnimator().apply {
+                addDuration = 300
+            }
 
 
             //handling click events in bottom App bar
@@ -157,7 +157,7 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener, Searc
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val itemToDelete = todoListAdapter.getTodoAt(viewHolder.adapterPosition)
                 todoViewModel.deleteSingleData(itemToDelete)
-                todoListAdapter.notifyItemRemoved(viewHolder.adapterPosition)
+
 
                 //restore the deleted data
                 restoreDeletedData(viewHolder.itemView, itemToDelete )
