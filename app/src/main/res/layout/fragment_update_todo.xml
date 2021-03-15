@@ -27,7 +27,7 @@
             android:fontFamily="@font/poppins_semibold"
             android:paddingStart="24dp"
             android:paddingEnd="24dp"
-            android:inputType="text"/>
+            android:inputType="text|textCapWords|textAutoCorrect|textAutoComplete"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -65,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Description"
-            android:inputType="textMultiLine"
+            android:inputType="textMultiLine|textAutoComplete|textAutoCorrect|textCapSentences"
             android:gravity="start"
             android:ems="10"
             android:fontFamily="@font/poppins_light"
