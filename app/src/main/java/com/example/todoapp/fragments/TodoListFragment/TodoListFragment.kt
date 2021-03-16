@@ -2,6 +2,7 @@ package com.example.todoapp.fragments.TodoListFragment
 
 import android.os.Bundle
 import android.view.*
+import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.appcompat.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -26,7 +27,7 @@ import com.example.todoapp.fragments.Utils.hideKeyboard
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialElevationScale
 import com.google.android.material.transition.MaterialSharedAxis
-import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
+import jp.wasabeef.recyclerview.animators.*
 import java.text.FieldPosition
 
 
@@ -83,8 +84,13 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener, Searc
             })
 
             //adding animation to recycler view
-            recyclerView.itemAnimator = SlideInUpAnimator().apply {
+            recyclerView.itemAnimator = LandingAnimator().apply {
                 addDuration = 300
+                moveDuration = 200
+                removeDuration = 200
+                changeDuration = 200
+                setInterpolator(AccelerateDecelerateInterpolator())
+
             }
 
 
