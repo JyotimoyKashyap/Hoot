@@ -8,4 +8,5 @@
     <color name="btn_iconTint">#F44A4A</color>
     <color name="btn_negativeTextColor">#F44A4A</color>
     <color name="cardColorBackground">#232323</color>
+    <color name="toolbar_color">#202020</color>
 </resources>

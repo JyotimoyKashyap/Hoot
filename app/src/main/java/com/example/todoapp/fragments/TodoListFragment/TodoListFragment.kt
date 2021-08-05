@@ -24,6 +24,7 @@ import com.example.todoapp.fragments.SharedViewModel
 import com.example.todoapp.fragments.TodoListFragment.Adapter.CustomDiffUtil
 import com.example.todoapp.fragments.TodoListFragment.Adapter.TodoListAdapter
 import com.example.todoapp.fragments.Utils.hideKeyboard
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialElevationScale
 import com.google.android.material.transition.MaterialSharedAxis
@@ -117,7 +118,6 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener, Searc
 
 
 
-
         //returning view root for layout inflation
         return binding.root
     }
@@ -138,6 +138,8 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener, Searc
         searchView?.isSubmitButtonEnabled = true
         searchView?.setOnQueryTextListener(this)
     }
+
+
 
 
 

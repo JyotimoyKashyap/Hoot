@@ -23,7 +23,6 @@
     <!-- Custom App Bar Title -->
     <style name="AppBarTitleTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
             <item name="fontFamily">@font/poppins_semibold</item>
-            <item name="android:textSize">28dp</item>
     </style>
 
 

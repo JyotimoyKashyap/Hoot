@@ -21,4 +21,5 @@
     <color name="btn_iconTint">#F44A4A</color>
     <color name="btn_negativeTextColor">#F44A4A</color>
     <color name="cardColorBackground">#FFFFFF</color>
+    <color name="toolbar_color">#FFF</color>
 </resources>

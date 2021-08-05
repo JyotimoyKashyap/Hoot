@@ -12,6 +12,7 @@ import android.view.View
 import android.view.animation.LinearInterpolator
 import android.widget.Toast
 import android.widget.Toolbar
+import androidx.customview.widget.Openable
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -22,6 +23,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.todoapp.databinding.ActivityMainBinding
 import com.example.todoapp.fragments.AddTodoFragment.AddTodoFragmentDirections
 import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.shape.CornerFamily
+import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.transition.MaterialFadeThrough
 import com.google.android.material.transition.MaterialSharedAxis
 
@@ -51,7 +54,8 @@ class MainActivity : AppCompatActivity(){
 
 
         setupActionBarWithNavController(findNavController(R.id.navhostfragment), appBarConfiguration)
-        supportActionBar?.elevation = 0f
+        binding.actionbar.elevation = 18.toFloat()
+        customizeToolbar()
 
 
 
@@ -59,8 +63,17 @@ class MainActivity : AppCompatActivity(){
 
 
 
+    }
 
+    // function to customize the material toolbar
+    fun customizeToolbar(){
+        val radius = 18
+        val background = binding.actionbar.background as MaterialShapeDrawable
 
+        background.shapeAppearanceModel =
+            background.shapeAppearanceModel.toBuilder()
+                .setAllCorners(CornerFamily.ROUNDED, radius.toFloat())
+                .build()
 
     }
 
