@@ -132,6 +132,7 @@ class TodoListFragment : Fragment() , TodoListAdapter.TodoAdapterListener, Searc
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.search_fragment_menu_items, menu)
 
+        //TODO:: search through toolbar click
         val search : MenuItem = menu.findItem(R.id.search_)
         val searchView: SearchView? = search.actionView as? SearchView
 
